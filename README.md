@@ -11,6 +11,7 @@ Related thread on Nvidia developer forum
 ```shell
 ./build_opencv.sh
 ```
+This clones OpenCV master branch and builds it with cuda support.
 
 ## Specifying an OpenCV version (git branch)
 ```shell
