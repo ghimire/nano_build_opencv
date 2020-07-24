@@ -121,6 +121,9 @@ configure () {
         -D WITH_LIBV4L=ON
         -D WITH_OPENGL=ON
         -D WITH_TENGINE=ON
+        -D WITH_INF_ENGINE=ON
+        -D WITH_NGRAPH=ON
+        -D ENABLE_CXX11=ON        
         "
 
     if [[ "$1" != "test" ]] ; then
