@@ -6,7 +6,7 @@ set -e
 
 # change default constants here:
 readonly PREFIX=/usr/local  # install prefix, (can be ~/.local for a user install)
-readonly DEFAULT_VERSION=master  # controls the default version (gets reset by the first argument)
+readonly DEFAULT_VERSION=4.4.0  # controls the default version (gets reset by the first argument)
 readonly CPUS=$(nproc)  # controls the number of jobs
 
 JOBS=$CPUS
@@ -98,6 +98,8 @@ install_dependencies () {
 configure () {
     local CMAKEFLAGS="
         -D BUILD_EXAMPLES=OFF
+        -D INSTALL_PYTHON_EXAMPLES=OFF
+        -D ENABLE_PRECOMPILED_HEADERS=OFF
         -D BUILD_opencv_python2=ON
         -D BUILD_opencv_python3=ON
         -D CMAKE_BUILD_TYPE=RELEASE
@@ -108,6 +110,7 @@ configure () {
         -D CUDNN_VERSION='8.0'
         -D EIGEN_INCLUDE_PATH=/usr/include/eigen3 
         -D ENABLE_NEON=ON
+        -D ENABLE_VFPV3=ON
         -D OPENCV_DNN_CUDA=ON
         -D OPENCV_ENABLE_NONFREE=ON
         -D OPENCV_EXTRA_MODULES_PATH=/tmp/build_opencv/opencv_contrib/modules
@@ -117,7 +120,9 @@ configure () {
         -D WITH_CUDNN=ON
         -D WITH_GSTREAMER=ON
         -D WITH_LIBV4L=ON
-        -D WITH_OPENGL=ON"
+        -D WITH_OPENGL=ON
+        -D WITH_TENGINE=ON
+        "
 
     if [[ "$1" != "test" ]] ; then
         CMAKEFLAGS="
