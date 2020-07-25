@@ -99,7 +99,6 @@ configure () {
     local CMAKEFLAGS="
         -D BUILD_EXAMPLES=OFF
         -D INSTALL_PYTHON_EXAMPLES=OFF
-        -D ENABLE_PRECOMPILED_HEADERS=OFF
         -D BUILD_opencv_python2=ON
         -D BUILD_opencv_python3=ON
         -D CMAKE_BUILD_TYPE=RELEASE
